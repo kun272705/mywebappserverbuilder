@@ -1,10 +1,9 @@
 package com.mycompany;
 
-class Server {
+class MyWebAppServer {
 
   static void main() {
   
   }
 
 }
-
