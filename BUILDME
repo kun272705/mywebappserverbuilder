@@ -10,12 +10,12 @@ if [[ -d src/ ]]; then
 
   if [[ "${MODE:-development}" == production ]]; then
 
-    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ '{}' +
+    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" '{}' -d dst/lib/ +
 
   else
 
-    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ -g '{}' +
-  
+    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" '{}' -d dst/lib/ -g +
+ 
   fi
 
   jar cf dst/lib/mywebappserver.jar -C dst/lib/ com/
