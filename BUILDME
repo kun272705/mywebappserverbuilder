@@ -8,15 +8,13 @@ if [[ -d src/ ]]; then
 
   mkdir -p dst/lib/
 
-  src=$(find src/ -type f -name "*.java")
-
   if [[ "${MODE:-development}" == production ]]; then
 
-    javac -cp "dst/lib/*" $src -d dst/lib/
+    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ '{}' +
 
   else
 
-    javac -cp "dst/lib/*" $src -d dst/lib/ -g
+    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ -g '{}' +
  
   fi
 
