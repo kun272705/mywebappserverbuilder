@@ -8,19 +8,23 @@ if [[ -d src/ ]]; then
 
   mkdir -p dst/lib/
 
+  find src/ -type f -name "*.java" > sources.txt
+
   if [[ "${MODE:-development}" == production ]]; then
 
-    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ '{}' +
+    javac -cp "dst/lib/*" @sources.txt -d dst/lib/
 
   else
 
-    find src/ -type f -name "*.java" -exec javac -cp "dst/lib/*" -d dst/lib/ -g '{}' +
+    javac -cp "dst/lib/*" @sources.txt -d dst/lib/ -g
  
   fi
 
   jar cf dst/lib/mywebappserver.jar -C dst/lib/ com/
 
   rm -r dst/lib/com/
+
+  rm sources.txt
 
 fi
 
