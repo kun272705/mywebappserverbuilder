@@ -20,9 +20,13 @@ if [[ -d src/ ]]; then
  
   fi
 
-  jar cf dst/lib/mywebappserver.jar -C dst/lib/ com/
+  find dst/lib/ -type f -name "*.class" -printf "%P\n" > classes.txt
 
-  rm -r dst/lib/com/
+  jar cf dst/lib/mywebappserver.jar -C dst/lib/ @classes.txt
+
+  rm classes.txt
+
+  rm -r dst/lib/*/
 
   rm sources.txt
 
