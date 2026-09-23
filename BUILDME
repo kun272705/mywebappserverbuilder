@@ -10,11 +10,11 @@ if [[ -d src/ ]]; then
 
   if [[ "${MODE:-development}" == production ]]; then
 
-    javac -sourcepath src/ src/com/mycompany/MyWebAppServer.java -cp "dst/lib/*" -d dst/lib/
+    javac src/com/mycompany/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/
 
   else
 
-    javac -sourcepath src/ src/com/mycompany/MyWebAppServer.java -cp "dst/lib/*" -d dst/lib/ -g
+    javac src/com/mycompany/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/ -g
  
   fi
 
