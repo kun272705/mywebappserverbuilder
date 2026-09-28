@@ -1,4 +1,4 @@
-package com.mycompany;
+package com.mycompany.mywebappserver;
 
 public class MyWebAppServer {
 
