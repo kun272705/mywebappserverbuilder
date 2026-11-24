@@ -4,24 +4,24 @@ set -euo pipefail
 
 if [[ -d src/ ]]; then
 
-  printf "Building src/\n"
+	printf "Building src/\n"
 
-  mkdir -p dst/lib/
+	mkdir -p dst/lib/
 
-  if [[ "${MODE:-development}" == production ]]; then
+	if [[ "${MODE:-development}" == production ]]; then
 
-    javac src/com/mycompany/mywebappserver/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/
+		javac src/com/mycompany/mywebappserver/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/
 
-  else
+	else
 
-    javac src/com/mycompany/mywebappserver/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/ -g
+		javac src/com/mycompany/mywebappserver/MyWebAppServer.java -sourcepath src/ -cp "dst/lib/*" -d dst/lib/ -g
  
-  fi
+	fi
 
-  version=$(grep -e "<version>.*</version>" -m 1 -o pom.xml | sed "s/<[^<>]*>//g")
-  jar cf "dst/lib/mywebappserver-${version}.jar" -C dst/lib/ com/
+	version=$(grep -e "<version>.*</version>" -m 1 -o pom.xml | sed "s/<[^<>]*>//g")
+	jar cf "dst/lib/mywebappserver-${version}.jar" -C dst/lib/ com/
 
-  rm -r dst/lib/com/
+	rm -r dst/lib/com/
 
 fi
 
